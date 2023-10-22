@@ -1,0 +1,49 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "autoprefixer": "10.4.15",
+    "axios": "^1.5.0",
+    "eslint": "^8.34.0",
+    "eslint-config-next": "13.4.19",
+    "next": "13.4.19",
+    "next-redux-wrapper": "^8.1.0",
+    "postcss": "8.4.28",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
+    "tailwindcss": "3.3.3"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.15.0",
+    "@next/bundle-analyzer": "^13.1.6",
+    "@svgr/webpack": "^6.5.1",
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "git-precommit-checks": "^3.0.6",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.3",
+    "kill-port": "^2.0.0",
+    "lerna": "^6.5.1",
+    "lint-staged": "^13.1.2",
+    "pm2": "^5.1.1",
+    "prettier": "^2.5.1"
+  }
+}
