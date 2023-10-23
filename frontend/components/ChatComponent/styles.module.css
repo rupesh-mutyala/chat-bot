@@ -9,7 +9,6 @@
 .user_text_container {
     background-color: var(--color-bg-header);
     padding: 24px 0;
-    border-bottom: 1px solid #6a6a6a;
 }
 
 .user_text {
@@ -22,7 +21,6 @@
 .bot_text_container {
     background-color: var(--color-bg-primary);
     padding: 24px 0;
-    border-bottom: 1px solid #6a6a6a;
 }
 
 .bot_text {
