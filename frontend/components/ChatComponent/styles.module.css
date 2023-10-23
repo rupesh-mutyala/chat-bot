@@ -1,0 +1,36 @@
+.list_container {
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
+.user_text_container {
+    background-color: var(--color-bg-header);
+    padding: 24px 0;
+}
+
+.user_text {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.bot_text_container {
+    background-color: var(--color-bg-primary);
+    padding: 24px 0;
+}
+
+.bot_text {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    width: calc(100% - 160px);
+    line-height: 28px;
+}

@@ -1,0 +1,13 @@
+.container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-text-secondary);
+    background-color: var(--color-bg-header);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
