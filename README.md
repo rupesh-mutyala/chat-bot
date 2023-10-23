@@ -8,8 +8,8 @@ Welcome to the Chat Bot repository. This project utilizes React and the Next.js 
 - [Features](#features)
   - [Dark Mode and Light Mode](#dark-mode-and-light-mode)
   - [Extensible State Management](#extensible-state-management)
+  - [Feedback and Rating](#feedback-and-rating)
   <!-- - [Responsive Design](#responsive-design) -->
-  <!-- - [Modular Architecture](#modular-architecture) -->
 
 ## Getting Started
 
@@ -36,8 +36,8 @@ This project offers a versatile user experience with the option to switch betwee
 ### Extensible State Management
 This project employs React's Context API for efficient state management and data sharing among components. By creating a context and provider as demonstrated in ValueContext.js, we simplify data handling and ensure a centralized approach to state management. This enhances the maintainability and reliability of the application, especially in complex React projects.
 
+### Feedback and Rating
+Users now have the ability to provide feedback and ratings for each conversation they have with the server.
+
 <!-- ### Responsive Design
 This project is designed to adapt to various devices and screen sizes. I've used media queries to provide a seamless experience across desktops, tablets, and smartphones. -->
-
-<!-- ### Modular Architecture
-To enhance code maintainability and readability, I've adopted a modular approach. The project leverages Redux to extract state management logic from React components, promoting clean and organized code. -->
