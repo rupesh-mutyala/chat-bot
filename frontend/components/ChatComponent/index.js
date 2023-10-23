@@ -9,6 +9,7 @@ import styles from './styles.module.css';
 import TypingAnimation from '../TypingAnimation';
 import EmptyState from '../EmptyState';
 import RegenerateResponse from './RegenerateResponse';
+import FeedbackAndRatingForm from '../FeedbackAndRatingForm';
 
 const axios = require('axios');
 
@@ -67,6 +68,15 @@ const useStyles = makeStyles(() => ({
 		maxWidth: '100px',
 		marginLeft: 'auto',
 	},
+	newChatButton: {
+		margin: '8px 0',
+		background: 'var(--color-bg-primary)',
+		border: '1px solid var(--color-text-primary)',
+		color: 'var(--color-text-primary)',
+		borderRadius: '6px',
+		padding: '8px',
+		cursor: 'pointer',
+	},
 }));
 
 function ChatContainer({ data = [], fetchData = () => {} }) {
@@ -82,9 +92,10 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 	const [hoveredChatItem, setHoveredChatItem] = useState(null);
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState(() => Boolean(isErrorPresent));
+	const [showFeedback, setShowFeedback] = useState(false);
 	const classes = useStyles();
 
-	const { messages = [] } = conversation;
+	const { messages = [], feedback, rating } = conversation;
 
 	const handleMouseEnter = (chatItemId) => {
 		setHoveredChatItem(chatItemId);
@@ -137,6 +148,10 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 	useEffect(() => {
 		setError(Boolean(isErrorPresent));
 	}, [isErrorPresent]);
+
+	useEffect(() => {
+		setShowFeedback(false);
+	}, [conversation]);
 
 	if (!Object.keys(conversation).length && Object.keys(conversation).length) {
 		return <EmptyState fetchData={fetchData} />;
@@ -226,9 +241,19 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 				})}
 			</div>
 
+			{showFeedback ? (
+				<FeedbackAndRatingForm
+					feedback={feedback}
+					rating={rating}
+					fetchData={fetchData}
+					id={query.id}
+					setShowFeedback={setShowFeedback}
+				/>
+			) : null}
+
 			{!error ? (
 				<Grid className={classes.grid} container spacing={2}>
-					<Grid item xs={10}>
+					<Grid item xs={8.5}>
 						<TextField
 							className={classes.inputField}
 							multiline
@@ -240,7 +265,7 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 						/>
 					</Grid>
 
-					<Grid item xs={2}>
+					<Grid item xs={1}>
 						<IconButton
 							color="primary"
 							className={classes.button}
@@ -249,6 +274,16 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 						>
 							<SendIcon />
 						</IconButton>
+					</Grid>
+
+					<Grid item xs={2.5}>
+						<button
+							className={classes.newChatButton}
+							type="button"
+							onClick={() => setShowFeedback((prev) => !prev)}
+						>
+							{showFeedback ? 'Hide Feedback' : 'Share Feedback'}
+						</button>
 					</Grid>
 				</Grid>
 			) : null}

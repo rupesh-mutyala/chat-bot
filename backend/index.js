@@ -182,6 +182,26 @@ app.post('/api/create_message_reaction', (req, res) => {
 	res.status(200).json({ message: 'reaction added successfully' });
 });
 
+app.post('/api/save_conversation_feedback', (req, res) => {
+	const { id = '', feedback = '', rating=0 } = req.body;
+
+	const conversationId = parseInt(id, 10);
+
+	conversations = conversations.map((item) => {
+		if (item.id === conversationId) {
+			return {
+				...item,
+				feedback,
+				rating
+			};
+		}
+
+		return item;
+	});
+
+	res.status(200).json({ message: 'feedback saved successfully' });
+});
+
 const PORT = 4000;
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
