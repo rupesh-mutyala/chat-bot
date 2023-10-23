@@ -5,23 +5,20 @@ import {
 	ThemeProvider as MuiThemeProvider,
 } from '@mui/material/styles';
 
-// Create a context for the theme
+// context for the theme
 const ThemeContext = createContext();
 
-// Custom hook to consume the theme context
 export const useTheme = () => useContext(ThemeContext);
 
 const lightTheme = createTheme({
 	palette: {
 		mode: 'light',
-		// Customize other theme options here
 	},
 });
 
 const darkTheme = createTheme({
 	palette: {
 		mode: 'dark',
-		// Customize other theme options here
 	},
 });
 

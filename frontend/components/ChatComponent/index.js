@@ -276,15 +276,17 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 						</IconButton>
 					</Grid>
 
-					<Grid item xs={2.5}>
-						<button
-							className={classes.newChatButton}
-							type="button"
-							onClick={() => setShowFeedback((prev) => !prev)}
-						>
-							{showFeedback ? 'Hide Feedback' : 'Share Feedback'}
-						</button>
-					</Grid>
+					{messages.length ? (
+						<Grid item xs={2.5}>
+							<button
+								className={classes.newChatButton}
+								type="button"
+								onClick={() => setShowFeedback((prev) => !prev)}
+							>
+								{showFeedback ? 'Hide Feedback' : 'Share Feedback'}
+							</button>
+						</Grid>
+					) : null}
 				</Grid>
 			) : null}
 		</Box>

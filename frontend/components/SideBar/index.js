@@ -75,7 +75,7 @@ function SideBar({ data, fetchData = () => {} }) {
 							onMouseEnter={() => handleMouseEnter(conversation.id)}
 							onMouseLeave={handleMouseLeave}
 							onClick={() => {
-								push(`/chat/${conversation.id}`);
+								push(`/chat/${conversation.id}`); /* go to a  conversation */
 							}}
 							className={`${classes.listItem} ${
 								parseInt(id, 10) === conversation.id
@@ -95,7 +95,7 @@ function SideBar({ data, fetchData = () => {} }) {
 									edge="end"
 									onClick={() => onClickDeleteChat(conversation.id)}
 								>
-									<DeleteIcon />
+									<DeleteIcon /> {/* delete conversation */}
 								</IconButton>
 							)}
 						</ListItem>

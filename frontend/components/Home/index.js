@@ -19,11 +19,12 @@ function Home() {
 	return (
 		<div className={styles.container}>
 			<div className={styles.sidebar}>
-				<SideBar data={data} fetchData={fetchData} />
+				<SideBar data={data} fetchData={fetchData} /> {/* sidebar */}
 			</div>
 
 			<div className={styles.chat}>
-				<ChatContainer data={data} fetchData={fetchData} />
+				<ChatContainer data={data} fetchData={fetchData} />{' '}
+				{/* main chat component */}
 			</div>
 		</div>
 	);

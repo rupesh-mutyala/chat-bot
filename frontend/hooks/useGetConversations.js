@@ -26,9 +26,10 @@ const useGetConversations = ({ setLoading }) => {
 			const unSavedConversation = apiData.find((item) => !item.is_saved);
 
 			if (unSavedConversation) {
-				router.push(`/chat/${unSavedConversation.id}`);
+				router.push(`/chat/${unSavedConversation.id}`); // if url is not correct, redirecting to a conversation
 			} else {
 				await axios.post('http://127.0.0.1:4000/api/create_conversation', {
+					// creating a new conversation if nothing is there
 					id: new Date().getTime(),
 				});
 
