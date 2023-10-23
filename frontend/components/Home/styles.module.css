@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+}
+
+.sidebar {
+    flex-basis: 20%;
+}
+
+.chat {
+    flex-basis: 80%;
+    height: calc(100vh - 78px);
+}
