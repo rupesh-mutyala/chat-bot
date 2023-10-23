@@ -119,6 +119,35 @@ app.post('/api/send_question', (req, res) => {
 	}
 });
 
+app.post('/api/regenerate_reponse', (req, res) => {
+
+	const { id = '', message_id = '' } = req.body;
+
+	const conversationId = parseInt(id, 10);
+	const messageId = parseInt(message_id, 10);
+
+	const text = texts[Math.floor(Math.random() * texts.length)] || texts[0];
+
+	conversations = conversations.map((item) => {
+		if (item.id === conversationId) {
+			return {
+				...item,
+				messages: item.messages.map((item1) => {
+					if (item1.message_id === messageId) {
+						return { ...item1, bot:text };
+					}
+
+					return item1;
+				}),
+			};
+		}
+
+		return item;
+	});
+
+	res.status(200).json({ message: 'Conversation updated successfully' });
+})
+
 app.post('/api/delete_conversation', (req, res) => {
 	const conversationId = parseInt(req.body.id, 10);
 
@@ -150,7 +179,7 @@ app.post('/api/create_message_reaction', (req, res) => {
 		return item;
 	});
 
-	res.status(200).json({ message: 'Conversation deleted successfully' });
+	res.status(200).json({ message: 'reaction added successfully' });
 });
 
 const PORT = 4000;

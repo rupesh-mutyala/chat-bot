@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, TextField, IconButton, Grid, Avatar } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
@@ -7,6 +7,8 @@ import { makeStyles } from '@mui/styles';
 import { useRouter } from 'next/router';
 import styles from './styles.module.css';
 import TypingAnimation from '../TypingAnimation';
+import EmptyState from '../EmptyState';
+import RegenerateResponse from './RegenerateResponse';
 
 const axios = require('axios');
 
@@ -41,6 +43,7 @@ const useStyles = makeStyles(() => ({
 	},
 	button: {
 		minWidth: 'auto',
+		marginTop: '4px',
 	},
 	grid: {
 		marginBottom: '16px',
@@ -69,12 +72,17 @@ const useStyles = makeStyles(() => ({
 function ChatContainer({ data = [], fetchData = () => {} }) {
 	const { query = {} } = useRouter();
 
-	const [hoveredChatItem, setHoveredChatItem] = useState(null);
-	const [inputValue, setInputValue] = useState('');
-	const classes = useStyles();
-
 	const conversation =
 		data.find((item) => item.id === parseInt(query.id, 10)) || {};
+
+	const isErrorPresent =
+		Object.keys(conversation).length &&
+		(conversation.messages || []).some((item) => !item.bot);
+
+	const [hoveredChatItem, setHoveredChatItem] = useState(null);
+	const [inputValue, setInputValue] = useState('');
+	const [error, setError] = useState(() => Boolean(isErrorPresent));
+	const classes = useStyles();
 
 	const { messages = [] } = conversation;
 
@@ -91,6 +99,8 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 	};
 
 	const handleSendClick = async () => {
+		setInputValue('');
+
 		try {
 			const { data: responseData } = await axios.post(
 				'http://127.0.0.1:4000/api/send_question',
@@ -105,8 +115,8 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 
 			fetchData(message_id, parseInt(query.id, 10));
 		} catch (err) {
-			console.log('err::', err);
-			fetchData();
+			await fetchData();
+			setError(true);
 		}
 	};
 
@@ -123,6 +133,14 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 			console.log('err::', err);
 		}
 	};
+
+	useEffect(() => {
+		setError(Boolean(isErrorPresent));
+	}, [isErrorPresent]);
+
+	if (!Object.keys(conversation).length && Object.keys(conversation).length) {
+		return <EmptyState fetchData={fetchData} />;
+	}
 
 	return (
 		<Box className={classes.chatContainer}>
@@ -155,7 +173,14 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 									<div className={styles.text}>
 										{bot ? (
 											<TypingAnimation text={bot} is_new={is_new} />
-										) : null}
+										) : (
+											<RegenerateResponse
+												message_id={message_id}
+												id={query.id}
+												fetchData={fetchData}
+												setError={setError}
+											/>
+										)}
 									</div>
 
 									{hoveredChatItem === message_id || reaction ? (
@@ -201,29 +226,32 @@ function ChatContainer({ data = [], fetchData = () => {} }) {
 				})}
 			</div>
 
-			<Grid className={classes.grid} container spacing={2}>
-				<Grid item xs={10}>
-					<TextField
-						className={classes.inputField}
-						multiline
-						maxRows={4}
-						variant="outlined"
-						placeholder="Type your message..."
-						value={inputValue}
-						onChange={handleInputChange}
-					/>
-				</Grid>
+			{!error ? (
+				<Grid className={classes.grid} container spacing={2}>
+					<Grid item xs={10}>
+						<TextField
+							className={classes.inputField}
+							multiline
+							maxRows={6}
+							variant="outlined"
+							placeholder="Type your message..."
+							value={inputValue}
+							onChange={handleInputChange}
+						/>
+					</Grid>
 
-				<Grid item xs={2}>
-					<IconButton
-						color="primary"
-						className={classes.button}
-						onClick={handleSendClick}
-					>
-						<SendIcon />
-					</IconButton>
+					<Grid item xs={2}>
+						<IconButton
+							color="primary"
+							className={classes.button}
+							disabled={!inputValue}
+							onClick={handleSendClick}
+						>
+							<SendIcon />
+						</IconButton>
+					</Grid>
 				</Grid>
-			</Grid>
+			) : null}
 		</Box>
 	);
 }

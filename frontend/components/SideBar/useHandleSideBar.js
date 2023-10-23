@@ -51,6 +51,8 @@ const useHandleSideBar = ({ fetchData, data = [] }) => {
 				return;
 			}
 
+			if (convId !== parseInt(id, 10)) push(`/chat/${parseInt(id, 10)}`);
+
 			await fetchData();
 		} catch (err) {
 			console.error('err', err);
