@@ -15,11 +15,11 @@ Welcome to the Chat Bot repository. This project utilizes React and the Next.js 
 
 To build and launch the project, please make sure you are in the "chat-bot" directory and execute the following commands in sequence. Ensure that you have npm installed, and follow these steps:
 
-1. **Build and run Backend**: Ensure you have npm installed. Run the following commands to install project dependencies and run the backend server:
+1. **Build and run Backend**: Ensure you have npm installed. Please make sure you are in the "chat-bot" directory and run the following commands to install project dependencies and run the backend server:
 
    ```bash
    cd backend && npm start
-2. **Start the Project**: After successfully starting the Backend server, Please open a new terminal and run the following commands to install project dependencies and run the frontend project:
+2. **Start the Project**: After successfully starting the Backend server, Please open a new terminal and please make sure you are in the "chat-bot" directory and run the following commands to install project dependencies and run the frontend project:
 
    ```bash
    cd frontend && yarn dev
