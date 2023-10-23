@@ -18,10 +18,12 @@ To build and run the project, Ensure you have npm installed and follow these ste
 1. **Build and run Backend**: Ensure you have npm installed. Run the following command to install project dependencies and run the backend server:
 
    ```bash
+   cd backend
    npm start
 2. **Start the Project**: After successfully starting Backend server, Run the following command to install project dependencies and run the frontend project:
 
    ```bash
+   cd ../frontend
    yarn dev
 4. In my project, I opted for React and Next.js as the frontend tools. The combination of React and Next.js is instrumental in crafting dynamic web applications. React serves as a versatile and efficient front-end library for dynamic user interfaces, while Next.js elevates the development process by facilitating server-side rendering, automated code splitting, and streamlined routing. This harmonious combination empowers developers to construct high-performing, SEO-friendly applications while enjoying a seamless developer experience, making it a primary choice for crafting web applications.
 3. upon successful installation and starting both the projects navigate to url provided from the frontend project. I used Node.js to create a mock API. The data will be stored in the node server, untill the server is running the data will be persisted once we close the server the data will be lost.
