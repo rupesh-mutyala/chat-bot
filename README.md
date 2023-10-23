@@ -19,7 +19,7 @@ To build and launch the project, please make sure you are in the "chat-bot" dire
 
    ```bash
    cd backend && npm start
-2. **Start the Project**: After successfully starting the Backend server, Please open a new terminal and please make sure you are in the "chat-bot" directory and run the following commands to install project dependencies and run the frontend project:
+2. **Start the Project**: After successfully starting the Backend server, Please open a new terminal and make sure you are in the "chat-bot" directory and run the following commands to install project dependencies and run the frontend project:
 
    ```bash
    cd frontend && yarn dev
