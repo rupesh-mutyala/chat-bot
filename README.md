@@ -6,10 +6,10 @@ Welcome to the Chat Bot repository. This project utilizes React and the Next.js 
 
 - [Getting Started](#getting-started)
 - [Features](#features)
-  - [Dark Mode and Light Mode](#dark-light)
+  - [Dark Mode and Light Mode](#dark-mode-and-light-mode)
   - [Extensible State Management](#extensible-state-management)
   <!-- - [Responsive Design](#responsive-design) -->
-  - [Modular Architecture](#modular-architecture)
+  <!-- - [Modular Architecture](#modular-architecture) -->
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ To build and launch the project, please make sure you are in the "chat-bot" dire
 ## Features
 
 ### Dark Mode and Light Mode
-Our project offers a versatile user experience with the option to switch between Dark Mode and Light Mode. This feature allows users to customize the appearance of the application to suit their preferences and needs. Whether it's working in low-light conditions or simply a matter of personal style, the ability to toggle between dark and light themes enhances readability and visual comfort. To use this feature, simply look for the mode-switching control in the user interface and adjust it according to your preference. This feature not only adds a touch of personalization to the application but also contributes to improved user accessibility.
+This project offers a versatile user experience with the option to switch between Dark Mode and Light Mode. This feature allows users to customize the appearance of the application to suit their preferences and needs. Whether it's working in low-light conditions or simply a matter of personal style, the ability to toggle between dark and light themes enhances readability and visual comfort. To use this feature, simply look for the mode-switching control in the user interface and adjust it according to your preference. This feature not only adds a touch of personalization to the application but also contributes to improved user accessibility.
 
 ### Extensible State Management
 This project employs React's Context API for efficient state management and data sharing among components. By creating a context and provider as demonstrated in ValueContext.js, we simplify data handling and ensure a centralized approach to state management. This enhances the maintainability and reliability of the application, especially in complex React projects.
@@ -39,5 +39,5 @@ This project employs React's Context API for efficient state management and data
 <!-- ### Responsive Design
 This project is designed to adapt to various devices and screen sizes. I've used media queries to provide a seamless experience across desktops, tablets, and smartphones. -->
 
-### Modular Architecture
-To enhance code maintainability and readability, I've adopted a modular approach. The project leverages Redux to extract state management logic from React components, promoting clean and organized code.
+<!-- ### Modular Architecture
+To enhance code maintainability and readability, I've adopted a modular approach. The project leverages Redux to extract state management logic from React components, promoting clean and organized code. -->
